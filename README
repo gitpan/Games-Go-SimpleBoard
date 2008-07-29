@@ -10,26 +10,30 @@ DESCRIPTION
   EXPORTED CONSTANTS
     Marker types for each board position (ORed together):
 
-       MARK_TRIANGLE # triangle mark
-       MARK_SQUARE   # square mark
-       MARK_CIRCLE   # circle mark
-       MARK_CROSS    # cross mark
-       MARK_SMALL_B  # small stone, used for scoring or marking
-       MARK_SMALL_W  # small stone, used for scoring or marking
-       MARK_B        # normal black stone
-       MARK_W        # normal whit stone
-       MARK_GRAYED   # in conjunction with MARK_[BW], grays the stone
-       MARK_LABEL    # a text label
-       MARK_HOSHI    # this is a hoshi point (not used much)
-       MARK_MOVE     # this is a regular move
-       MARK_KO       # this is a ko position
-       MARK_REDRAW   # ignored, can be used for your own purposes
+       MARK_B            # normal black stone
+       MARK_W            # normal whit stone
+       MARK_GRAYED       # in conjunction with MARK_[BW], grays the stone
 
-       COLOUR_WHITE  # guarenteed to be 0
-       COLOUR_BLACK  # guarenteed to be 1
+       MARK_SMALL_B      # small stone, used for scoring or marking
+       MARK_SMALL_W      # small stone, used for scoring or marking
+       MARK_SMALL_GRAYED # in conjunction with MARK_SMALL_[BW], grays the stone
 
-       MOVE_HANDICAP # used as "x-coordinate" for handicap moves
-       MOVE_PASS     # can be used as "x-coordinate" for pass moves
+       MARK_TRIANGLE     # triangle mark
+       MARK_SQUARE       # square mark
+       MARK_CIRCLE       # circle mark
+       MARK_CROSS        # cross mark
+
+       MARK_LABEL        # a text label
+       MARK_HOSHI        # this is a hoshi point (not used much)
+       MARK_MOVE         # this is a regular move
+       MARK_KO           # this is a ko position
+       MARK_REDRAW       # ignored, can be used for your own purposes
+
+       COLOUR_WHITE      # guaranteed to be 0
+       COLOUR_BLACK      # guaranteed to be 1
+
+       MOVE_HANDICAP     # used as "x-coordinate" for handicap moves
+       MOVE_PASS         # can be used as "x-coordinate" for pass moves
 
   METHODS
     my $board = new $size

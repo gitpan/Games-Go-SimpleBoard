@@ -16,26 +16,30 @@ Please supply a description )
 
 Marker types for each board position (ORed together):
 
-   MARK_TRIANGLE # triangle mark
-   MARK_SQUARE   # square mark
-   MARK_CIRCLE   # circle mark
-   MARK_CROSS    # cross mark
-   MARK_SMALL_B  # small stone, used for scoring or marking
-   MARK_SMALL_W  # small stone, used for scoring or marking
-   MARK_B        # normal black stone
-   MARK_W        # normal whit stone
-   MARK_GRAYED   # in conjunction with MARK_[BW], grays the stone
-   MARK_LABEL    # a text label
-   MARK_HOSHI    # this is a hoshi point (not used much)
-   MARK_MOVE     # this is a regular move
-   MARK_KO       # this is a ko position
-   MARK_REDRAW   # ignored, can be used for your own purposes
+   MARK_B            # normal black stone
+   MARK_W            # normal whit stone
+   MARK_GRAYED       # in conjunction with MARK_[BW], grays the stone
 
-   COLOUR_WHITE  # guarenteed to be 0
-   COLOUR_BLACK  # guarenteed to be 1
+   MARK_SMALL_B      # small stone, used for scoring or marking
+   MARK_SMALL_W      # small stone, used for scoring or marking
+   MARK_SMALL_GRAYED # in conjunction with MARK_SMALL_[BW], grays the stone
 
-   MOVE_HANDICAP # used as "x-coordinate" for handicap moves
-   MOVE_PASS     # can be used as "x-coordinate" for pass moves
+   MARK_TRIANGLE     # triangle mark
+   MARK_SQUARE       # square mark
+   MARK_CIRCLE       # circle mark
+   MARK_CROSS        # cross mark
+
+   MARK_LABEL        # a text label
+   MARK_HOSHI        # this is a hoshi point (not used much)
+   MARK_MOVE         # this is a regular move
+   MARK_KO           # this is a ko position
+   MARK_REDRAW       # ignored, can be used for your own purposes
+
+   COLOUR_WHITE      # guaranteed to be 0
+   COLOUR_BLACK      # guaranteed to be 1
+
+   MOVE_HANDICAP     # used as "x-coordinate" for handicap moves
+   MOVE_PASS         # can be used as "x-coordinate" for pass moves
 
 =head2 METHODS
 
@@ -50,11 +54,11 @@ use Carp ();
 
 use base Exporter::;
 
-our $VERSION = '1.0';
+our $VERSION = '1.01';
 
 our @EXPORT = qw(
    MARK_TRIANGLE MARK_SQUARE MARK_CIRCLE MARK_SMALL_B MARK_SMALL_W MARK_B
-   MARK_W MARK_GRAYED MARK_MOVE MARK_LABEL MARK_HOSHI MARK_KO MARK_CROSS
+   MARK_W MARK_GRAYED MARK_SMALL_GRAYED MARK_MOVE MARK_LABEL MARK_HOSHI MARK_KO MARK_CROSS
    MARK_REDRAW
    COLOUR_BLACK COLOUR_WHITE
    MOVE_HANDICAP MOVE_PASS
@@ -62,26 +66,30 @@ our @EXPORT = qw(
 
 # marker types for each board position (ORed together)
 
-sub MARK_TRIANGLE (){ 0x0001 }
-sub MARK_SQUARE   (){ 0x0002 }
-sub MARK_CIRCLE   (){ 0x0004 }
-sub MARK_SMALL_B  (){ 0x0008 } # small stone, used for scoring or marking
-sub MARK_SMALL_W  (){ 0x0010 } # small stone, used for scoring or marking
-sub MARK_B        (){ 0x0020 } # normal black stone
-sub MARK_W        (){ 0x0040 } # normal whit stone
-sub MARK_GRAYED   (){ 0x0080 } # in conjunction with MARK_[BW], grays the stone
-sub MARK_LABEL    (){ 0x0100 }
-sub MARK_HOSHI    (){ 0x0200 } # this is a hoshi point (not used much)
-sub MARK_MOVE     (){ 0x0400 } # this is a regular move
-sub MARK_KO       (){ 0x0800 } # this is a ko position
-sub MARK_CROSS    (){ 0x1000 }
-sub MARK_REDRAW   (){ 0x8000 }
+sub MARK_TRIANGLE     (){ 0x0001 }
+sub MARK_SQUARE       (){ 0x0002 }
+sub MARK_CIRCLE       (){ 0x0004 }
+sub MARK_CROSS        (){ 0x0008 }
 
-sub COLOUR_WHITE  (){ 0 }
-sub COLOUR_BLACK  (){ 1 }
+sub MARK_SMALL_B      (){ 0x0010 } # small stone, used for scoring or marking
+sub MARK_SMALL_W      (){ 0x0020 } # small stone, used for scoring or marking
+sub MARK_SMALL_GRAYED (){ 0x0040 }
 
-sub MOVE_PASS     (){ undef }
-sub MOVE_HANDICAP (){ -2 }
+sub MARK_B            (){ 0x0080 } # normal black stone
+sub MARK_W            (){ 0x0100 } # normal whit stone
+sub MARK_GRAYED       (){ 0x0200 } # in conjunction with MARK_[BW], grays the stone
+
+sub MARK_LABEL        (){ 0x0400 }
+sub MARK_HOSHI        (){ 0x0800 } # this is a hoshi point (not used much)
+sub MARK_MOVE         (){ 0x1000 } # this is a regular move
+sub MARK_KO           (){ 0x2000 } # this is a ko position
+sub MARK_REDRAW       (){ 0x8000 }
+
+sub COLOUR_WHITE      (){ 0 }
+sub COLOUR_BLACK      (){ 1 }
+
+sub MOVE_PASS         (){ undef }
+sub MOVE_HANDICAP     (){ -2 }
 
 =item my $board = new $size
 
